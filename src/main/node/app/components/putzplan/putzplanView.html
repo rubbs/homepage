@@ -1,0 +1,27 @@
+
+<md-content md-theme="deep-orange">
+
+<div layout="row">
+<h1>Putzplan {{year}}</h1>
+<md-button ng-click="onPdf()">pdf</md-button>
+</div>
+
+<div class="putzplan">
+	<table>
+		<col ng-repeat="m in month"></col>
+		<tr class="monat">
+			<td ng-repeat="m in month">{{m}}</td>
+		</tr>
+
+		<tr ng-repeat="row in putzplan">
+			<td ng-repeat="col in row track by $index" ng-class="{active: col.day==currentDay && col.month==currentMonth}">
+				<span class="wochentag">{{col.name}}</span>
+				<span class="datum">{{col.day}}.{{col.month}}.</span>
+				<span class="putzdienst">{{col.job}}</span>
+			</td>
+		</tr>
+
+	</table>
+</div>
+
+</md-content>
