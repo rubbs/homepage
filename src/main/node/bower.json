@@ -12,7 +12,8 @@
     "greensock": "~1.16.1",
     "angular-sanitize": "~1.4.3",
     "jspdf": "~1.1.135",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "lightgallery": "~1.2.19"
   },
   "devDependencies": {
     "angular-mocks": "latest",

@@ -10,6 +10,8 @@
 angular.module('rs.posaunenchor', ['rs.slideshow'])
   .controller('PosaunenchorCtrl', function ($scope) {
 
+    $("#lightgallery").lightGallery();
+
     // Bilder aus Gemmrigheim
     var baseUrl = 'http://googledrive.com/host/0B9OtAb0rZWfGfmtRc1Fra0FvdWgyYkJpME5fSTNtVGNkTTd6R1I2RFh2UWw5bV91ZFRMTUk/';
     $scope.slides = [
