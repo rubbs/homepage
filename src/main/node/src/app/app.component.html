@@ -1,12 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<mat-toolbar>
+<mat-toolbar color="primary">
   <div class="md-toolbar-tools">
     <span routerLink="/">Ruben's Homepage</span>
 
-    <span flex></span>
-
-    <button mat-button ng-href="/#posaunenchor">Posaunenchor</button>
+    <!--<button mat-button routerLink="/#posaunenchor">Posaunenchor</button>-->
     <!--md-button ng-href="/#ejw">EJW</md-button-->
     <!--<md-button ng-href="/#tischtennis">Tischtennis</md-button>-->
     <button mat-button routerLink="/weihnachtsmarkt">Weihnachtsmarkt</button>
@@ -15,4 +13,21 @@
 
 </mat-toolbar>
 
-<router-outlet></router-outlet>
+<mat-card>
+  <router-outlet></router-outlet>
+</mat-card>
+
+<mat-card>
+  <mat-card-content>
+    <div layout="column">
+      <div layout="row">
+        <div flex></div>
+        <button mat-button routerLink="/impressum">Impressum</button>
+        <button mat-button routerLink="/datenschutz">Datenschutz</button>
+        <button mat-button routerLink="/disclaimer">Haftungsauschluss</button>
+        <div flex></div>
+      </div>
+    </div>
+  </mat-card-content>
+
+</mat-card>

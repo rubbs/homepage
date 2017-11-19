@@ -7,13 +7,19 @@ import {MyMaterialModuleModule} from './my-material-module/my-material-module.mo
 import { AppRoutingModule } from './/app-routing.module';
 import { WeihnachtsmarktComponent } from './weihnachtsmarkt/weihnachtsmarkt.component';
 import { PutzplanComponent } from './putzplan/putzplan.component';
+import { DisclaimerComponent } from './disclaimer/disclaimer.component';
+import { DatenschutzComponent } from './datenschutz/datenschutz.component';
+import { ImpressumComponent } from './impressum/impressum.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     WeihnachtsmarktComponent,
-    PutzplanComponent
+    PutzplanComponent,
+    DisclaimerComponent,
+    DatenschutzComponent,
+    ImpressumComponent
   ],
   imports: [
     BrowserModule,

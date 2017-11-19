@@ -9,7 +9,7 @@ import * as jsPDF from 'jspdf';
 export class PutzplanComponent implements OnInit {
   init: boolean;
   month: string[];
-  putzplan: string[];
+  putzplan: string[][];
   private year: number;
   private currentDay: number;
   private currentMonth: number;
@@ -41,19 +41,20 @@ export class PutzplanComponent implements OnInit {
     // create putzplan
     // iterate over month
 
-    for ( let day = 0; day < 31; day++){
+    for ( let day = 0; day < 31; day++) {
       const row = [];
-      for (let month = 0; month < this.month.length; month++){
-        const currDay = {};
-        currDay.day = day + 1;
-        currDay.month = month + 1;
-        currDay.name = '';
-        currDay.job = '';
-        if ( day < this.daysInMonth(month + 1)){
+      for (let month = 0; month < this.month.length; month++) {
+        const currDay = {
+          day: day + 1,
+          month: month + 1,
+          name: '',
+          job: ''
+        };
+        if ( day < this.daysInMonth(month + 1)) {
           currDay.name = this.nameOfDay(day + 1, month + 1);
         }
 
-        if (this.nameOfDay(day + 1, month + 1) === 'Sa'){
+        if (this.nameOfDay(day + 1, month + 1) === 'Sa') {
           currDay.job = this.workers[this.KalenderWoche(day + 1, month + 1) % this.workers.length];
         }
 
@@ -62,12 +63,14 @@ export class PutzplanComponent implements OnInit {
 
       this.putzplan.push(row);
     }
+
   }
 
   onPdf() {
     console.log('create pdf putzplan');
 
     /*jshint newcap: false */
+    // noinspection JSPotentiallyInvalidConstructorUsage
     const pdf = new jsPDF('landscape');
 
     pdf.setFontSize(22);
@@ -79,7 +82,7 @@ export class PutzplanComponent implements OnInit {
     const yOffset = 5;
 
     // iterate over month
-    for (let month = 0; month < this.month.length; month++){
+    for (let month = 0; month < this.month.length; month++) {
       y = 30;
 
 
@@ -96,7 +99,7 @@ export class PutzplanComponent implements OnInit {
       pdf.line(x - 1, y - 10, x - 1, y + 30 * yOffset + 1);
 
       // iterate over days in month
-      for (let day = 0; day < this.daysInMonth(month + 1); day++){
+      for (let day = 0; day < this.daysInMonth(month + 1); day++) {
 
         // horizontal lines
         pdf.line(x - 1, y + 1, x + xOffset - 1, y + 1);
@@ -104,7 +107,7 @@ export class PutzplanComponent implements OnInit {
         pdf.setFontSize(6);
         pdf.text(x, y, this.nameOfDay(day + 1, month + 1) + ', ' +  (day + 1) + '.' + (month + 1) + '.');
 
-        if (this.nameOfDay(day + 1, month + 1) === 'Sa'){
+        if (this.nameOfDay(day + 1, month + 1) === 'Sa') {
           pdf.setFontSize(8);
           pdf.text((x + 10), y, this.workers[this.KalenderWoche(day + 1, month + 1) % this.workers.length]);
         }
