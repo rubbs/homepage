@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+
+
+.putzplan table
+{
+  border: 1px solid black;
+  table-layout:fixed;
+  font-size: 10pt;
+}
+
+.putzplan td {
+  overflow: hidden;
+}
+
+.putzplan .monat {
+  font-weight: bold;
+  font-size: 150%
+}
+
+.putzplan .wochentag {
+  font-size: 80%;
+}
+
+.putzplan .putzdienst {
+  font-size: 120%;
+}
+
+.putzplan .active {
+  font-weight: bold;
+  background: #f90;
+}
+
+.putzplan col:nth-child(even) {
+  background: #CCC
+}
+.putzplan col:nth-child(odd) {
+  background: #eee
+}
