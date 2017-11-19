@@ -9,4 +9,4 @@
  */
 angular.module('rs.weihnachtsmarkt', [])
   .controller('WeihnachtsmarktCtrl', function () {
-  });
+    });
