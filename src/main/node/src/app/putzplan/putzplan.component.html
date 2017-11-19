@@ -5,14 +5,25 @@
     <button mat-button (click)="onPdf()">pdf</button>
   </div>
 
-  <div class="putzplan">
+  <div class="putzplan" (show)="init">
+
+    <table>
+      <tr class="monat"><td *ngFor="let m of month">{{m}}</td></tr>
+      <tr *ngFor="let row of putzplan">
+        <td *ngFor="let col of row">
+          <span class="wochentag">{{col.name}}</span>
+          <span class="datum">{{col.day}}.{{col.month}}.</span>
+          <span class="putzdienst">{{col.job}}</span>
+        </td>
+      </tr>
+    </table>
+
     <!--
     <table>
-      <col ng-repeat="m in month"/>
+      <col *ngFor="let m of month"/>
       <tr class="monat">
-        <td ng-repeat="m in month">{{m}}</td>
+        <td *ngFor="let m of month">{{m}}</td>
       </tr>
-
       <tr ng-repeat="row in putzplan">
         <td ng-repeat="col in row track by $index" ng-class="{active: col.day==currentDay && col.month==currentMonth}">
           <span class="wochentag">{{col.name}}</span>
@@ -22,6 +33,6 @@
       </tr>
 
     </table>
-    -->
+-->
   </div>
 

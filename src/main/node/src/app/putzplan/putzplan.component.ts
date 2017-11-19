@@ -7,7 +7,9 @@ import * as jsPDF from 'jspdf';
   styleUrls: ['./putzplan.component.css']
 })
 export class PutzplanComponent implements OnInit {
-  private month: string[];
+  init: boolean;
+  month: string[];
+  putzplan: string[];
   private year: number;
   private currentDay: number;
   private currentMonth: number;
@@ -34,6 +36,32 @@ export class PutzplanComponent implements OnInit {
     ];
 
     this.workers = ['Rasha/Idris', 'Kilic', 'Schwarz'];
+    this.putzplan = [];
+
+    // create putzplan
+    // iterate over month
+
+    for ( let day = 0; day < 31; day++){
+      const row = [];
+      for (let month = 0; month < this.month.length; month++){
+        const currDay = {};
+        currDay.day = day + 1;
+        currDay.month = month + 1;
+        currDay.name = '';
+        currDay.job = '';
+        if ( day < this.daysInMonth(month + 1)){
+          currDay.name = this.nameOfDay(day + 1, month + 1);
+        }
+
+        if (this.nameOfDay(day + 1, month + 1) === 'Sa'){
+          currDay.job = this.workers[this.KalenderWoche(day + 1, month + 1) % this.workers.length];
+        }
+
+        row.push(currDay);
+      }
+
+      this.putzplan.push(row);
+    }
   }
 
   onPdf() {
@@ -117,6 +145,7 @@ export class PutzplanComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.init = true;
   }
 
 
